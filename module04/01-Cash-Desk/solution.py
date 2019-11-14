@@ -1,32 +1,32 @@
-class Bill:
+class Bill(object):
     def __init__(self, amount):
         if not isinstance(amount, int):
             raise TypeError('Amount is not integer')
 
         if amount < 0:
             raise ValueError('Amount is negative')
-        self.amount = amount
+        self._amount = amount
 
     def __str__(self):
-        return "A " + str(self.amount) + "$ bill"
+        return "A " + str(self._amount) + "$ bill"
 
     def __repr__(self):
-        return self.amount
+        return self._amount
 
     def __int__(self):
-        return self.amount
+        return self._amount
 
-    def __eq__(self, other):
-        if self.__int__() == other.__int__():
+    def __eq__(self, other_bill):
+        if self._amount == int(other_bill):
             return True
         else:
             return False
 
     def __hash__(self):
-        return hash(self.amount)
+        return hash(self._amount)
 
 
-class BatchBill:
+class BatchBill(object):
     def __init__(self, bills):
         self.bills = bills
 
@@ -39,19 +39,19 @@ class BatchBill:
     def total(self):
         s = 0
         for bill in self.bills:
-            s += bill.amount
+            s += int(bill)
         return s
 
     def __getitem__(self, index):
         return self.bills[index]
 
 
-class CashDesk:
+class CashDesk(object):
     def __init__(self):
         self.banknotes = {}
 
     def take_bill(self, bill):
-        amount = bill.amount
+        amount = bill._amount
         if not (amount in self.banknotes):
             self.banknotes[amount] = 1
         else:
@@ -74,7 +74,7 @@ class CashDesk:
         return s
 
     def inspect(self):
-        s = 'We have a total of ' + str(self.total()) + '$ in the desk' + '\n'
+        s = f'We have a total of {self.total()}$ in the desk\n'
         s += 'We have the following count of bills, sorted in ascending order:'
         keys = sorted(self.banknotes.keys())
         for k in keys:
