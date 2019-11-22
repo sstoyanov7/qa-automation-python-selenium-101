@@ -54,8 +54,6 @@ def remove_salt(dict):
 
 FIBONACCI_NUMBERS = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144]
 
-
-# not workingr
 def add_fibonacci(lst):
     next = lst[-1] + lst[-2]
     lst.append(next)
@@ -64,7 +62,5 @@ def add_fibonacci(lst):
 def fib_exists(lst, n):
     return n in lst
 
-
-# not working
 def which_fib(lst, n):
     return lst.index(n) + 1
