@@ -1,4 +1,4 @@
-class Panda:
+class Panda(object):
     def __init__(self, name, email, gender):
         self._name = name
         self._email = email
@@ -37,7 +37,7 @@ class Panda:
         return f'Panda: ({self.name()}, {self.email()}, {self.gender()})'
 
 
-class PandaSocialNetwork:
+class PandaSocialNetwork(object):
     def __init__(self):
         self.network = {}
         self.friends = {}
