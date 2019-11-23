@@ -46,13 +46,13 @@ class PandaSocialNetwork(object):
         if self.has_panda(panda):
             raise ValueError(f'I\'s already added {str(panda)} to the network.')
 
-        key = panda.__hash__()
+        key = hash(panda)
         self.network[key] = {key: panda}
 
         return
 
     def has_panda(self, panda):
-        key = panda.__hash__()
+        key = hash(panda)
         b = key in self.network
 
         return b
@@ -64,16 +64,16 @@ class PandaSocialNetwork(object):
         if (not self.has_panda(panda2)):
             self.add_panda(panda2)
 
-        key1 = panda1.__hash__()
-        key2 = panda2.__hash__()
+        key1 = hash(panda1)
+        key2 = hash(panda2)
         self.network[key1][key2] = panda2
         self.network[key2][key1] = panda1
 
         return
 
     def are_friends(self, panda1, panda2):
-        key1 = panda1.__hash__()
-        key2 = panda2.__hash__()
+        key1 = hash(panda1)
+        key2 = hash(panda2)
         b = (key1 in self.network) and (key2 in self.network[key1])
 
         return b
@@ -83,10 +83,10 @@ class PandaSocialNetwork(object):
             return False
 
         friends_list = []
-        friends_dict = self.network[panda.__hash__()]
+        friends_dict = self.network[hash(panda)]
         for friend_key in friends_dict:
             # exclude panda from the friends list
-            if (friend_key == panda.__hash__()):
+            if (friend_key == hash(panda)):
                 continue
 
             friends_list.append(friends_dict[friend_key])
