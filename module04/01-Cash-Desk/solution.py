@@ -82,17 +82,19 @@ class CashDesk(object):
         return s
 
 
+if __name__ == "__main__":
+    a = Bill(10)
 
-a = Bill(10)
+    values = [10, 20, 50, 100]
+    bills = [Bill(value) for value in values]
 
-values = [10, 20, 50, 100]
-bills = [Bill(value) for value in values]
+    batch = BatchBill(bills)
 
-batch = BatchBill(bills)
+    for bill in batch:
+        print(bill)
 
-for bill in batch:
-    print(bill)
+    # A 10$ bill
+    # A 20$ bill
+    # A 50$ bill
 
-# A 10$ bill
-# A 20$ bill
-# A 50$ bill
+    exit(0)
