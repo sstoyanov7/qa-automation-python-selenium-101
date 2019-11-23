@@ -1,7 +1,7 @@
 import unittest
 from datetime import datetime
 
-from calculator import add, subtract, multiply, divide
+import calculator
 
 
 class CalculatorTestCase(unittest.TestCase):
@@ -22,55 +22,42 @@ class CalculatorTestCase(unittest.TestCase):
         print("tearDownClass executes only once. DROP DATABASE;")
 
     def test_add(self):
-        self.assertEqual(add(4, 4), 8)
-
+        self.assertEqual(calculator.add(4, 4), 8)
     def test_add_positive_to_negative(self):
-        self.assertEqual(add(4, -4), 0)
-
+        self.assertEqual(calculator.add(4, -4), 0)
     def test_add_not_equal(self):
-        self.assertNotEqual(add(4, 4), 10)
-
+        self.assertNotEqual(calculator.add(4, 4), 10)
     def test_add_positive_to_zero(self):
-        self.assertEqual(add(42, 0), 42)
+        self.assertEqual(calculator.add(42, 0), 42)
 
     def test_subtract(self):
-        self.assertEqual(subtract(4, 3), 1)
-
+        self.assertEqual(calculator.subtract(4, 3), 1)
     def test_subtract_positive_to_negative(self):
-        self.assertEqual(subtract(4, -4), 8)
-
+        self.assertEqual(calculator.subtract(4, -4), 8)
     def test_subtract_not_equal(self):
-        self.assertNotEqual(subtract(4, 4), 2)
-
+        self.assertNotEqual(calculator.subtract(4, 4), 2)
     def test_subtract_positive_to_zero(self):
-        self.assertEqual(subtract(42, 0), 42)
+        self.assertEqual(calculator.subtract(42, 0), 42)
 
     def test_multiply(self):
-        self.assertEqual(multiply(5, 5), 25)
-
+        self.assertEqual(calculator.multiply(5, 5), 25)
     def test_multiply_by_zero(self):
-        self.assertEqual(multiply(5, 0), 0)
-
+        self.assertEqual(calculator.multiply(5, 0), 0)
     def test_multiply_positive_to_negative(self):
-        self.assertEqual(multiply(3, -5), -15)
-
+        self.assertEqual(calculator.multiply(3, -5), -15)
     def test_multiply_negative_to_negative(self):
-        self.assertEqual(multiply(-3, -5), 15)
+        self.assertEqual(calculator.multiply(-3, -5), 15)
 
     def test_divide(self):
-        self.assertEqual(divide(5, 5), 1)
-
+        self.assertEqual(calculator.divide(5, 5), 1)
     def test_divide_by_one(self):
-        self.assertEqual(divide(5, 1), 5)
-
+        self.assertEqual(calculator.divide(5, 1), 5)
     def test_divide_by_zero(self):
-        self.assertRaises(ZeroDivisionError, divide, 5, 0)
-
+        self.assertRaises(ZeroDivisionError, calculator.divide, 5, 0)
     def test_divide_positive_to_negative(self):
-        self.assertEqual(divide(15, -5), -3)
-
+        self.assertEqual(calculator.divide(15, -5), -3)
     def test_divide_negative_to_negative(self):
-        self.assertEqual(divide(-15, -3), 5)
+        self.assertEqual(calculator.divide(-15, -3), 5)
 
 
 class FlakyTest(unittest.TestCase):
