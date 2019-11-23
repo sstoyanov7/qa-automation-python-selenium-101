@@ -28,9 +28,8 @@ class Panda(object):
         return result
 
     def __hash__(self):
-        s = self.__str__()
+        s = str(self)
         h = hash(s)
-        h2 = hash((self.name(), self.email(), self.gender()))
         return h
 
     def __str__(self):
