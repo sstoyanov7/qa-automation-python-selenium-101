@@ -41,7 +41,7 @@ def to_number(digits):
     for f in digits:
         s += str(f)
     number = int(s)
-    return number;
+    return number
 
 def count_vowels(str):
     """

@@ -32,13 +32,16 @@ PANCAKE_INGREDIENTS = {
     "salt": 0.001
 }
 
+FATTEN_PANCAKE_EGGS = 6
+FATTEN_PANCAKE_BUTTER = True
+
 def ingredient_exists(ingr, dict):
     return ingr in dict
 
 def fatten_pancakes(dict):
     fatten = dict.copy()
-    fatten['eggs'] = 6
-    fatten['butter'] = True
+    fatten['eggs'] = FATTEN_PANCAKE_EGGS
+    fatten['butter'] = FATTEN_PANCAKE_BUTTER
     return fatten
 
 def add_sugar(dict):
